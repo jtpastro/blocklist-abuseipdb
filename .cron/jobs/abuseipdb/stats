@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+set -e
+export LC_ALL=C
+
+# Setup
+cd "$(dirname $0)"
+GIT_ROOT=$(git rev-parse --show-toplevel)
+mkdir -p $GIT_ROOT/stats
+cd $GIT_ROOT
+
+update-stats() {
+  local days=$1
+  OUTPUT="$GIT_ROOT/stats/stats-${days}.cidr.ipv4"
+
+  # Generate statistics
+  echo "✓ stats/abuseipdb-s100-${days}.ipv4"
+  cat "./abuseipdb-s100-${days}.ipv4" | \
+    iprange -1 | \
+    sed 's/\./ /g' | \
+    awk '{print $1, $2, $3}' | \
+    sed 's/[[:space:]]/./g' | \
+    sort | uniq -c | sort | \
+    sed 's/$/.0\/24/' | \
+    awk '$1 >= 1 {print $1, $2}' | \
+    sort -t ' ' -k1,1nr -k2,2g | \
+    sponge "$OUTPUT"
+}
+
+update-stats 1d &
+update-stats 3d &
+update-stats 7d &
+update-stats 14d &
+update-stats 30d &
+update-stats 60d &
+update-stats 90d &
+update-stats 120d &
+update-stats all &
+
+
+wait
+
