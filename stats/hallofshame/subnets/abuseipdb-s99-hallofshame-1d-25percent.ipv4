@@ -1,0 +1,38 @@
+#
+# Hall of Shame: 1d
+# An aggregated list of ip ranges, where more than 25% the traffic from a /24 range is malicious from the last 1days
+#
+#
+# Last updated:        2026-03-01 09:45:50 UTC
+# Days:                1d
+# Malicious level:     > 25%
+# Filename:            abuseipdb-s99-hallofshame-1d-25percent.ipv4
+# Number of ips:       5632
+#
+# Source:              https://github.com/borestad/blocklist-abuseipdb
+# Credits:             https://www.abuseipdb.com - please support them!
+# Example:             https://www.abuseipdb.com/check-block/64.62.156.0/24
+#
+
+20.65.194.0/24
+45.156.128.0/24
+45.156.129.0/24
+64.62.156.0/24
+64.62.197.0/24
+65.49.1.0/24
+85.203.23.0/24
+87.236.176.0/24
+91.196.152.0/24
+91.230.168.0/24
+91.231.89.0/24
+100.29.192.0/24
+135.237.126.0/24
+154.83.197.0/24
+165.154.162.0/24
+165.154.163.0/24
+165.154.172.0/24
+185.247.137.0/24
+193.37.32.0/24
+193.163.125.0/24
+195.184.76.0/24
+206.168.34.0/24
